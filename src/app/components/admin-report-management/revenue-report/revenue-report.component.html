@@ -1,0 +1,32 @@
+<div class="alert alert-info" *ngIf="revenueList.length==0">Data not found..</div>
+<div fxLayoutAlign="center center" fxFlexFill>
+  <mat-card fxFlex="70">
+    <mat-card-title>REVENUE TABLE</mat-card-title>
+    <table class="table table-sum" style="border: 1px;">
+      <thead class="table-primary">
+        <th> UserId </th>
+        <th> Date </th>
+        <th> OrderId </th>
+        <th> ProductId </th>
+        <th> Product Name </th>
+        <th> Product Category </th>
+        <th> Product Price </th>
+        <th> Dispatch Status </th>
+      </thead>
+      <ng-container *ngFor="let revenueItem of revenueList">
+        <tr class="table-dark">
+          <td> {{revenueItem.userId}} </td>
+          <td> {{revenueItem.date}}</td>
+          <td> {{revenueItem.orderId}}</td>
+          <td> {{revenueItem.productId }}</td>
+          <td> {{revenueItem.productName}} </td>
+          <td> {{revenueItem.productCategory}} </td>
+          <td> {{revenueItem.productPrice}} </td>
+          <td> {{revenueItem.dispatchStatus}} </td>
+        </tr>
+
+      </ng-container>
+
+    </table>
+  </mat-card>
+</div>

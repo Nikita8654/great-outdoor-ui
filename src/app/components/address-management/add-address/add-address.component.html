@@ -1,0 +1,76 @@
+<section class="jumbotron text-center">
+    <div class="container">
+        <h1 class="mb-0">Enter New Address</h1>
+    </div>
+</section>
+<section id="bg">
+    <mat-card class="container text-center">
+        <h2 class="mb-4">Shipping Address</h2>
+        <form [formGroup]="addressForm" autocomplete="off" novalidate
+            (ngSubmit)="addAddress(addressForm.value)">
+            <mat-card-content>
+                <mat-form-field class="mb-4">
+                    <input matInput type="text" placeholder="Full Name" formControlName="fullName" id="addline">
+                    <mat-error *ngIf="hasError('fullName', 'required')">Full Name is required</mat-error>
+                </mat-form-field>
+                <mat-form-field class="mb-4">
+                    <input matInput type="text" placeholder="Address Line" formControlName="addressLine" id="addline">
+                    <mat-hint align="end">Not more then 60 characters long.</mat-hint>
+                    <mat-error *ngIf="hasError('addressLine', 'required')">Address Line is required</mat-error>
+                    <mat-error *ngIf="hasError('addressLine', 'maxlength')">You have more than 60 characters</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="mb-4">
+                    <input matInput type="text" placeholder="City name" formControlName="city" id="city">
+                    <mat-hint align="end">Not more then 30 characters long.</mat-hint>
+                    <mat-error *ngIf="hasError('city', 'required')">City is required</mat-error>
+                    <mat-error *ngIf="hasError('city', 'maxlength')">You have more than 30 characters</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="mb-4">
+                    <input matInput type="text" placeholder="Pincode" formControlName="pincode" id="pincode">
+                    <mat-hint align="end">Must be a 6 digit valid pincode</mat-hint>
+                    <mat-error *ngIf="hasError('pincode', 'required')">Pincode is required</mat-error>
+                    <mat-error *ngIf="hasError('pincode', 'minmax')">Invalid pincode</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="mb-4">
+                    <input matInput type="text" placeholder="State" formControlName="state" id="state">
+                    <mat-hint align="end">Not more then 6 characters long.</mat-hint>
+                    <mat-error *ngIf="hasError('state', 'required')">State is required</mat-error>
+                    <mat-error *ngIf="hasError('state', 'maxlength')">You have more than 30 characters</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="mb-4">
+                    <input matInput type="text" placeholder="Phone Number" formControlName="phoneNo" id="phoneNo">
+                    <mat-hint align="end">Not more then 10 digits long.</mat-hint>
+                    <mat-error *ngIf="hasError('phoneNo', 'required')">Phone Number is required</mat-error>
+                    <mat-error *ngIf="hasError('phoneNo', 'maxlength')">You have more than 10 digits</mat-error>
+                </mat-form-field>
+                <br>
+                <mat-form-field class="mb-4">
+                    <input matInput type="text" placeholder="other PhoneNo (optional)" formControlName="otherPhoneNo" id="otherPhoneNo">
+                    <mat-hint align="end">Not more then 10 digits long.</mat-hint>
+                </mat-form-field>
+                <br>
+              <mat-form-field class="mb-4">
+                        <mat-label>Address Type</mat-label>
+                        <mat-select placeholder="Address Type" formControlName="addressType" id="addressType">
+                          <mat-option  *ngFor="let type of addressTypes" [value]="type.value">
+                            {{type.viewValue}}
+                          </mat-option>
+                        </mat-select>
+                    <mat-error *ngIf="hasError('addressType', 'required')">Address Type is required</mat-error>
+            </mat-form-field>
+            </mat-card-content>
+            <mat-card-actions align="center">
+                <button mat-raised-button color="primary" type="submit" [disabled]="addressForm.invalid" >Save</button>
+                <button type="button" mat-raised-button color="warn" (click)="onCancel()">Cancel</button>
+            </mat-card-actions>
+        </form>
+
+    
+            <div class="alert alert-info" *ngIf="success">Address Added Successfully...</div> 
+
+    </mat-card>
+</section>

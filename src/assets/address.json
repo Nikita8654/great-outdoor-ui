@@ -1,0 +1,29 @@
+[
+    {
+        "addressId":"A101",
+        "fullName":"Reetesh Kumar",
+        "cityName":"Greater Noida",
+        "colony":"SS Enclave, Beta 2",
+        "flatNo":"202-A",
+        "phoneNo":"7217800497",
+        "pincode":"201310"
+    },
+    {
+        "addressId":"A102",
+        "fullName":"Reetesh Kumar",
+        "cityName":"New Delhi",
+        "colony":"Mayur Vihar 1",
+        "flatNo":"204-B",
+        "phoneNo":"9935126735",
+        "pincode":"201310"
+    },
+    {
+        "addressId":"A103",
+        "fullName":"Reetesh Kumar Mandal",
+        "cityName":"Greater Noida",
+        "colony":"SS Enclave, Beta 2",
+        "flatNo":"202-A",
+        "phoneNo":"9934413365",
+        "pincode":"201310"
+    }
+]

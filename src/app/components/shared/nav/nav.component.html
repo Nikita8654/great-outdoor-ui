@@ -1,0 +1,85 @@
+<nav class="navbar navbar-expand-lg navbar-light bg-light ">
+    <a class="navbar-brand font-weight-bold" href="#">Great Outdoor</a>
+
+    <div class="collapse navbar-collapse" id="navbarSupportedContent">
+        <ul class="navbar-nav ml-auto">
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="">Home <span class="sr-only">(current)</span></a>
+            </li>
+            <li class="nav-item active" *ngIf="isRetailer">
+                <a class="nav-link" routerLink="/products">Products</a>
+            </li>
+            <li class="dropdown" *ngIf="isRetailer">
+                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><span style="color: black;">My Account</span></a>
+                <!-- Dropdown Menu -->
+                <ul class="dropdown-menu">
+                    <li><a routerLink="/orders" tabindex="-1" class="menu-item">My Orders</a></li>
+                    <!--<li><a routerLink="/address/add-address" tabindex="-1" class="menu-item">Add Address</a></li>-->
+                    <li><a routerLink="/address/view-address" tabindex="-1" class="menu-item">Address</a></li>
+
+                </ul>
+            </li>
+
+            <li class="dropdown" *ngIf="isRetailer">
+                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><span style="color: black;">Inventory System</span></a>
+                <!-- Dropdown Menu -->
+                <ul class="dropdown-menu">
+                    <li><a routerLink="/add-retailer-product" tabindex="-1" class="menu-item">Add Product</a></li>
+                    <li><a routerLink="/viewall-retailer-product" tabindex="-1" class="menu-item">View Product </a></li>
+                    <li><a routerLink="/search-retailer-product" tabindex="-1" class="menu-item">Search Product</a></li>
+                </ul>
+            </li>
+            <li class="nav-item active" *ngIf="isRetailer">
+                <a class="nav-link" routerLink="/wishlist">Wish List</a>
+            </li>
+            <li class="nav-item active" *ngIf="isRetailer">
+                <a class="nav-link" routerLink="/cart"><i class="fa fa-shopping-cart" aria-hidden="true"></i> Shopping
+                    Cart<strong><sup style="color: chocolate; font-size: large;"
+                            *ngIf="totalNoOfCartItems>0">{{totalNoOfCartItems}}</sup></strong></a>
+            </li>
+            <li class="nav-item active">
+                <a class="nav-link" routerLink="/aboutUs">About Us</a>
+            </li>
+
+            <li class="nav-item active" *ngIf="!isLogin">
+                <a class="nav-link" routerLink="/login">Login</a>
+            </li>
+
+            <!--Product Master Job-->
+         
+            <li class="nav-item active" *ngIf="isProductMaster">
+                <a class="nav-link" routerLink="/addProduct">Add Product</a>
+            </li>
+
+            <li class="nav-item active" *ngIf="isProductMaster">
+                <a class="nav-link" routerLink="/view-product">View Product</a>
+            </li>
+
+            <li class="nav-item active" *ngIf="isAdmin">
+                <a class="nav-link" routerLink="/addProductMaster">Add Product Master</a>
+            </li>
+
+            <li class="nav-item active" *ngIf="isAdmin">
+                <a class="nav-link" routerLink="/revenue-report">Revenue Report</a>
+            </li>
+
+            <li class="dropdown" *ngIf="isAdmin">
+                <a href="#" class="dropdown-toggle nav-link" data-toggle="dropdown"><span style="color: black;">Growth Report</span> </a>
+                <!-- Dropdown Menu -->
+                <ul class="dropdown-menu">
+                    <li><a routerLink="/yearly" tabindex="-1" class="menu-item">Yearly</a></li>
+                    <li><a routerLink="/monthly" tabindex="-1" class="menu-item">Monthly</a></li>
+                    <li><a routerLink="/quaterly" tabindex="-1" class="menu-item">Quaterly</a></li>
+                </ul>
+            </li>
+
+            <li class="nav-item active" *ngIf="isLogin">
+                <a class="nav-link" (click)="logoutUser()" style="cursor: pointer;">Logout</a>
+            </li>
+        </ul>
+        <!-- <form class="form-inline my-2 my-lg-0">
+          <input class="form-control mr-sm-2" type="text" placeholder="Search">
+          <button class="btn btn-secondary my-2 my-sm-0" type="submit"><i class="fa fa-search" aria-hidden="true"></i>Search</button>
+        </form>-->
+    </div>
+</nav>

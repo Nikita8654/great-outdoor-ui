@@ -1,0 +1,81 @@
+<script src="update-product.component.ts"></script>
+<div fxLayoutAlign="center center" fxFlexFill>
+  <mat-card fxFlex="40">
+    <h3 style="margin-top:10%;text-align: center"><strong>Update Product</strong></h3>
+    <form fxLayout="column" [formGroup]="productForm" (ngSubmit)="onSubmit(productForm.value)">
+      <!--<div class="input-row">
+        <mat-form-field fxFlex>
+          <mat-label>Product Id</mat-label>
+          <input matInput
+                 placeholder="Product Id"
+                 formControlName="productId" readonly>
+        </mat-form-field>
+      </div>-->
+      <div class="input-row">
+        <mat-form-field fxFlex>
+          <mat-label>Product Name</mat-label>
+          <input matInput
+                 placeholder="Product Name"
+                 formControlName="productName" #name>
+          <mat-error>{{ formErrors['productName'] }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="input-row">
+        <mat-form-field fxFlex>
+          <mat-label>Product Price</mat-label>
+          <input matInput
+                 placeholder="Price"
+                 formControlName="productPrice">
+          <mat-error>{{ formErrors['productPrice'] }}</mat-error>
+        </mat-form-field>
+      </div>
+
+      <div class="input-row">
+        <mat-form-field fxFlex>
+          <mat-label>Product color</mat-label>
+          <input matInput
+                 placeholder="Color"
+                 formControlName="productColor">
+          <mat-error>{{ formErrors['productColor'] }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="input-row">
+        <mat-form-field fxFlex>
+          <mat-label>Product Category</mat-label>
+          <mat-select formControlName="productCategory">
+            <mat-option *ngFor="let category of productCategory| keyvalue" [value]="category.key">
+              {{category.value}}
+            </mat-option>
+          </mat-select>
+          {{ formErrors['productCategory'] }}
+        </mat-form-field>
+      </div>
+      <div class="input-row">
+        <mat-form-field fxFlex>
+          <mat-label>Product Quantity</mat-label>
+          <input matInput
+                 placeholder="Quantity"
+                 formControlName="productQuantity">
+          <mat-error>{{ formErrors['productQuantity'] }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="input-row">
+        <mat-form-field fxFlex>
+          <mat-label>Product Description</mat-label>
+          <input matInput
+                 placeholder="Description"
+                 formControlName="productSpecification">
+          <mat-error>{{ formErrors['productSpecification'] }}</mat-error>
+        </mat-form-field>
+      </div>
+      <div class="form-button-row">
+        <button mat-raised-button
+                [disabled]="!productForm.valid"
+                color="primary">Update Product
+        </button>
+      </div>
+
+    </form>
+    <div class="alert alert-info" *ngIf="updateSuccess">Product Update Successfully..!</div>
+  </mat-card>
+</div>

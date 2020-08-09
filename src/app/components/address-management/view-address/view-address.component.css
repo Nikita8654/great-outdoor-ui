@@ -1,0 +1,21 @@
+.jumbotron {
+    padding-top: 3rem;
+    padding-bottom: 3rem;
+    margin-bottom: 0;
+
+  }
+  .jumbotron p:last-child {
+    margin-bottom: 0;
+  }
+  .album {
+    background-image: url(https://img.pngio.com/green-and-white-background-design-png-free-download-white-and-green-png-1920_1200.png);
+    background-attachment: fixed;
+  }
+  
+  .jumbotron h1 {
+    font-weight: 300;
+  }
+  
+  .jumbotron .container {
+    max-width: 40rem;
+  }

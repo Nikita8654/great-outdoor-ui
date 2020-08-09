@@ -1,0 +1,19 @@
+.card-horizontal {
+    display: flex;
+    flex: 1 1 auto;
+}
+.card-img{
+    max-height: 300px;
+    max-width: 180px;
+}
+.del{
+    margin-top: auto;
+    margin-bottom: auto;
+}
+h4,h5,h6{
+    color: black;
+}
+.d-block{
+  height: 450px;
+  width: 100%;
+}

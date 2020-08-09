@@ -1,0 +1,22 @@
+.bg1 {
+    background-image: url(https://www.findingtheuniverse.com/wp-content/uploads/2019/07/Photographer-in-Glencoe.jpg);
+    height: 100vh;
+    position: relative;
+    background-repeat: no-repeat;
+    background-size: cover;
+    opacity: .7;
+}
+.h{
+    margin-top: 130px;
+    color:black;
+    font-weight: bolder;
+    font-size: 70px;
+
+}
+.tex{
+    position: absolute;
+    top: 7%;
+    left: 18%;
+
+}
+

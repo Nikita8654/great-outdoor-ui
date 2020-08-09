@@ -1,0 +1,9 @@
+.table th, .table td {
+    padding: 1.7rem;
+  }
+
+.table th{
+  color: black;
+  background-color:#b5c4d0;
+}
+

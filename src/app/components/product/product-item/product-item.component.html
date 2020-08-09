@@ -1,0 +1,24 @@
+
+<div class="card  shadow-sm h-100">
+    <img class="bd-placeholder-img card-img-top p-2" width="100%" height="200px"
+      src="assets/img/product.jpg" />
+  
+    <div class="card-body">
+      <p class="card-text">
+        <strong>{{ productItem.productPrice | currency:'INR' }}</strong>
+        <i *ngIf="addedToWishlist" class="fas fa-heart float-right" (click)="handleRemoveFromWishlist()"></i>
+        <i *ngIf="!addedToWishlist" class="far fa-heart float-right" (click)="handleAddToWishlist()"></i>
+      </p>
+      <p class="card-text">{{productItem.productName| slice: 0:80}}....</p>
+    </div>
+  <div class="card-footer">
+    <div class="d-flex justify-content-between align-items-center">
+      <div class="btn-group">
+        <button type="button" class="btn btn-sm btn-primary product-btn" *ngIf="!addedToCart" (click)="handleAddToCart()">Add to Cart</button>
+        <button type="button" class="btn btn-sm btn-primary product-btn" *ngIf="addedToCart" (click)="GoToCart()">GoTo Cart</button>
+        <button type="button" class="btn btn-sm btn-outline-secondary product-btn">View Details</button>
+      </div>
+    </div>
+  </div>
+    
+  </div>

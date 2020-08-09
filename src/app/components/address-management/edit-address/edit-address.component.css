@@ -1,0 +1,19 @@
+
+  .jumbotron h1 {
+    font-weight: 300;
+  }
+mat-form-field{
+    width: 400px;
+}
+mat-card-title{
+    text-align: center;
+}	
+mat-form-field{
+    width: 400px;
+}
+mat-card{
+  width: 40%;
+}
+#bg{
+  background-image: url(https://img.pngio.com/green-and-white-background-design-png-free-download-white-and-green-png-1920_1200.png);
+}

@@ -1,0 +1,111 @@
+<div class="container">
+<div class="row" style="margin-top: 1%;">
+    <div class="col-md">
+            <mat-card>
+                <mat-card-title>
+                    Delivery Address
+                </mat-card-title>
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col">
+                            <span><strong>{{deliveryAddress.fullName}}</strong> </span>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 1%;">
+                        <div class="col">
+                            <span> {{deliveryAddress.addressLine}}, {{deliveryAddress.city}} - {{deliveryAddress.pincode}} ( {{deliveryAddress.state}} ) </span>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 1%;">
+                        <div class="col">
+                            <span><strong>Phone Number</strong></span>
+                        </div>
+                    </div>
+                    <div class="row" >
+                        <div class="col">
+                            <span>{{deliveryAddress.phoneNo}}, {{deliveryAddress.otherPhoneNo}} </span>
+                        </div>
+                    </div>
+                </mat-card-content>
+            </mat-card>
+            <mat-card style="margin-top: 2%;">
+                <mat-card-title>
+                    Order Summary
+                </mat-card-title>
+                <mat-card-content>
+                    <div class="row">
+                        <div class="col">
+                            <span>Order id ({{orderedItem.orderId}})</span>
+                        </div>
+                    </div>
+                    <div class="row" style="margin-top: 1%;">
+                        <div class="col">
+                            <img class="img-fluid img-thumbnail rounded float-left" src="assets/img/product.jpg" height="100px" width="100px">
+                        </div>
+                        <div class="col">
+                            <div class="row">
+                                <div class="col">
+                                    <mat-card-content>
+                                        <div class="row">
+                                            <div class="col">
+                                                <span style="color: black; font-size: medium;">{{product.productName |slice:0:40}}...</span>
+                                            </div>                         
+                                        </div>
+                                        <div class="row" style="padding-top: 1%;">
+                                            <div class="col">
+                                                <div><span style="color: grey;">Color: {{product.productColor}} Size:M</span> </div>
+                                                <div><span style="color: grey;">Specification: {{product.productSpecification}}</span></div>
+                                            </div>
+                                        </div>
+                                    </mat-card-content>                               
+                                </div>
+                            </div>        
+                        </div>
+                        <div class="col">
+                            <mat-card-content>
+                                <div class="row">
+                                    <div class="col">
+                                        <span style="color: black; font-size: medium;">{{orderedItem.price| currency:'INR'}}</span>
+                                    </div>                         
+                                </div>
+                            </mat-card-content>
+                        </div>
+                        <div class="col">
+                            <mat-card-content *ngIf="orderedItem.dispatchStatus===1">
+                                <div class="row">
+                                    <div class="col">
+                                        <i class="placed fa fa-circle" aria-hidden="true"></i>&nbsp;<span class="badge" style="color:black; font-size: medium;">Ordered <!-- Delivered on Mar 15 --Product Status with date--></span>
+                                    </div>                         
+                                </div>
+                                <div class="row">
+                                    <div class="col">
+                                        <span  style="color: grey; font-size:small;">Ordered Placed<!--Prouct Status Message--></span>
+                                    </div>                         
+                                </div>
+                            </mat-card-content>
+                            <mat-card-content *ngIf="orderedItem.dispatchStatus==2">
+                              <div class="row">
+                                  <div class="col">
+                                      <i class="cancelled fa fa-circle" aria-hidden="true"></i>&nbsp;<span class="badge" style="color:black; font-size: medium;">Cancelled <!-- Delivered on Mar 15 --Product Status with date--></span>
+                                  </div>                         
+                              </div>
+                              <div class="row">
+                                  <div class="col">
+                                      <span  style="color: grey; font-size:small;">Shippment is cancelled<!--Prouct Status Message--></span>
+                                  </div>                         
+                              </div>
+                          </mat-card-content>
+                        </div>
+                    </div>  
+                </mat-card-content>
+                <mat-card-actions>
+                    <div class="btn-grp">
+                        <button mat-button class="btn btn-outline-primary" (click)="openCancelPopup()" *ngIf="orderedItem.dispatchStatus!=2"><i class="fa fa-ban" aria-hidden="true"></i>&nbsp; CANCEL</button>
+                        <button mat-button class="btn btn-outline-info float-right" (click)="openHelpPopup()"><i class="fa fa-question-circle" aria-hidden="true"></i>&nbsp;NEED HELP</button>
+                    </div>
+                   
+                  </mat-card-actions>
+            </mat-card>
+    </div>
+</div>
+</div>

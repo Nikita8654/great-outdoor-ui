@@ -1,0 +1,56 @@
+<div fxLayoutAlign="center center" style="margin-top: 10em">
+    <mat-card fxFlex="20">
+       <P >Search Product</P>
+            <mat-form-field >
+                <mat-label>Enter Inventory Id</mat-label>
+               <input matInput name="ProductId" placeholder="Inventory Id" [(ngModel)]="inventoryId">
+            </mat-form-field>
+            
+            <div class="form-group">
+                <button class="btn btn-info " type="submit" (click)="findById()">Search</button>
+            </div>
+            
+
+        </mat-card> 
+
+        
+          <br>
+        <div *ngIf="submitted && dataFound">
+            <mat-card >  
+            <table class="table table-sum" style="border: 1px;">
+                <thead class="table-primary">
+                    <th>Retailer Id</th>
+                    <th>Product Id</th>
+                    <th>Product Category</th>
+                    <th>Product Name</th>
+                    <th>Product Quantity</th>
+                    <th>Total Amount(₹)</th>
+                    <th>Product Receive Time</th>
+                    <th>Product Receive Date</th>
+                    <th>Product Sale Time</th>
+                    <th>Product Sale Date</th>
+                </thead>
+                <ng-container>
+                    <tr >
+                        <td>{{model.retailerId}}</td>
+                        <td>{{model.productId}}</td>
+                        <td>{{model.productCategory}}</td>
+                        <td>{{model.productName}}</td>
+                        <td>{{model.productQuantity}}</td>
+                        <td>{{model.totalAmount | currency:"₹"}}</td>
+                        <td>{{model.productReceiveTimeStamp | timeStampToTime}}</td>
+                        <td>{{model.productReceiveTimeStamp | timeStampToDate | date}}</td>
+                        <td>{{model.productSaleTimeStamp | timeStampToTime }}</td>
+                        <td>{{model.productSaleTimeStamp | timeStampToDate | date}}</td>
+                    </tr>
+                </ng-container> 
+              
+              </table>
+            </mat-card>
+        </div>
+    
+        <div class="alert alert-danger" *ngIf="submitted && dataNotFound">Data Not Found</div>
+
+  
+  
+</div>

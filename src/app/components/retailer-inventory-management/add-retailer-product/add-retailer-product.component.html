@@ -1,0 +1,99 @@
+<div fxLayoutAlign="center center" style="margin-top: 2em;">
+    <mat-card fxFlex="25">
+      
+        <form 
+        
+        style="height:730px;" name="form" (ngSubmit)="f.form.valid && addProduct()" #f="ngForm"  novalidate>
+
+            <p class="h4 mb-4">Add Product</p>
+    
+            <div class="form-group" >
+                <label for="Product Id">Product Id</label>
+                <input required type="text" class="form-control" 
+                name="productId" 
+                [(ngModel)]="model.productId" 
+                #id="ngModel" [ngClass]="{ 'is-invalid': f.submitted && id.invalid }" >
+                <div class="text-danger" *ngIf="id.touched && id.invalid">
+                    <div>ID is required</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Product Quantity">Product Quantity</label>
+                <input required type="text"  class="form-control" 
+                name="productQuantity" 
+                [(ngModel)]="model.productQuantity"  
+                #pro="ngModel" [ngClass]="{ 'is-invalid': f.submitted && pro.invalid }">
+                <div class="text-danger" *ngIf="pro.touched && pro.invalid ">
+                    <div>Field Required</div>
+                </div>
+            </div>
+
+            <div class="form-group">
+                <label for="Total Amount">Total Amount</label>
+                <input required type="text"  class="form-control" 
+                name="totalAmount" 
+                [(ngModel)]="model.totalAmount" 
+                #am="ngModel" [ngClass]="{ 'is-invalid': f.submitted && am.invalid }">
+                <div class="text-danger" *ngIf="am.touched && am.invalid">
+                    <div>Field Required</div>
+                </div>
+            </div>
+
+            <div>
+                <label for=" Product Receive Date">Receive Date</label><br>
+            <mat-form-field>
+                <mat-label>Choose a date</mat-label>
+                <input required matInput [max]="maxDate"
+                [(ngModel)]="model.productReceiveDate" 
+                name="productReceiveDate" 
+                [matDatepicker]="picker1">
+                <mat-datepicker-toggle matSuffix [for]="picker1"></mat-datepicker-toggle>
+                <mat-datepicker #picker1></mat-datepicker>
+              </mat-form-field> </div>
+
+            <div class="form-group">
+                <label for=" Product Receive Time">Receive Time</label>
+                <input required type="time" class="form-control" 
+                name="productReceiveTime" 
+                [(ngModel)]="model.productReceiveTime" 
+                #rt="ngModel" [ngClass]="{ 'is-invalid': f.submitted && rt.invalid }">
+                <div class="text-danger" *ngIf="rt.touched && rt.invalid">
+                    <div >Field Required</div>
+                </div>
+            </div>
+
+            <div>
+                <label for=" Product Sale Date">Sale Date</label><br>
+            <mat-form-field>
+                <mat-label>Choose a date</mat-label>
+                <input required matInput [max]="maxDate"
+                [(ngModel)]="model.productSaleDate" 
+                name="productSaleDate" 
+                [matDatepicker]="picker">
+                <mat-datepicker-toggle matSuffix [for]="picker"></mat-datepicker-toggle>
+                <mat-datepicker #picker></mat-datepicker>
+              </mat-form-field> </div>
+
+            <div class="form-group">
+                <label for=" Product Sale Time">Sale Time</label>
+                <input required type="time" class="form-control" 
+                name="productSaleTime" 
+                [(ngModel)]="model.productSaleTime" 
+                #rt="ngModel" [ngClass]="{ 'is-invalid': f.submitted && rt.invalid }">
+                <div class="text-danger" *ngIf="rt.touched && rt.invalid">
+                    <div >Field Required</div>
+                </div>
+            </div>    
+
+            <div class="form-group">
+                <button class="btn btn-info  my-4" [disabled]="f.invalid" type="submit">Add Product</button>
+            </div>
+
+
+        </form>
+        <!-- <div class="alert alert-info" *ngIf="success">Product Added Successfully...</div> -->
+    </mat-card>
+    </div>
+
+

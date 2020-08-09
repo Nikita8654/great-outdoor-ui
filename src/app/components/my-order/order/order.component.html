@@ -1,0 +1,85 @@
+<div class="container">
+<div class="alert alert-info" *ngIf="orderList.length===0">No orders.</div>
+<div class="row" *ngIf="orderList.length>0">
+    <div class="col-md-12">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let orderItem of orderList">
+          <!--<app-order-item></app-order-item>-->
+          <!--Card-->
+
+<mat-card style="cursor: pointer;" (click)="populateOrderDetails(orderItem)">
+  <div class="row">
+      <div class="col">
+          <img class="img-fluid img-thumbnail rounded float-left" src="assets/img/product.jpg" height="100px" width="100px">
+      </div>
+      <div class="col">
+          <div class="row">
+              <div class="col">
+                  <mat-card-content>
+                      <div class="row">
+                          <div class="col">
+                              <span style="color: black; font-size: medium;">{{orderItem.productModel.productName|slice:0:40}}...</span>
+                          </div>                         
+                      </div>
+                      <div class="row" style="padding-top: 1%;">
+                          <div class="col">
+                              <div><span style="color: grey;">Color: {{orderItem.productModel.productColor}}  Size:M</span> </div>
+                              <div><span style="color: grey;">Specification: {{orderItem.productModel.productSpecification}}</span></div>
+                          </div>
+                      </div>
+                  </mat-card-content>                               
+              </div>
+          </div>        
+      </div>
+      <div class="col">
+          <mat-card-content>
+              <div class="row">
+                  <div class="col">
+                      <span style="color: black; font-size: medium;">{{orderItem.price | currency:'INR'}}</span>
+                  </div>                         
+              </div>
+          </mat-card-content>
+      </div>
+      <div class="col">
+          <mat-card-content *ngIf="orderItem.dispatchStatus===1">
+              <div class="row">
+                  <div class="col">
+                      <i class="placed fa fa-circle" aria-hidden="true"></i>&nbsp;<span class="badge" style="color:black; font-size: medium;">Ordered <!-- Delivered on Mar 15 --Product Status with date--></span>
+                  </div>                         
+              </div>
+              <div class="row">
+                  <div class="col">
+                      <span  style="color: grey; font-size:small;">Ordered Placed<!--Prouct Status Message--></span>
+                  </div>                         
+              </div>
+          </mat-card-content>
+          <mat-card-content *ngIf="orderItem.dispatchStatus==2">
+            <div class="row">
+                <div class="col">
+                    <i class="cancelled fa fa-circle" aria-hidden="true"></i>&nbsp;<span class="badge" style="color:black; font-size: medium;">Cancelled <!-- Delivered on Mar 15 --Product Status with date--></span>
+                </div>                         
+            </div>
+            <div class="row">
+                <div class="col">
+                    <span  style="color: grey; font-size:small;">Shippment is cancelled<!--Prouct Status Message--></span>
+                </div>                         
+            </div>
+        </mat-card-content>
+      </div>
+  </div>
+ <div class="row" *ngIf="refundSuccess && ! (orderItem.dispatchStatus==1)">
+     <mat-card>
+      <mat-card-header>
+          <mat-card-title ><span style="color: green;">Refund Completed</span> (Ref Id:ref5872771298)</mat-card-title>
+          <mat-card-subtitle>Your shipment has been cancelled.{{150|currency:'INR'}} as refund will be credit in your account</mat-card-subtitle>
+        </mat-card-header>
+     </mat-card>
+ </div>
+</mat-card>
+<!--/.Card-->
+        </li>
+    </ul>
+    </div>
+</div>
+</div>
+

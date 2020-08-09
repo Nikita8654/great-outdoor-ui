@@ -1,0 +1,156 @@
+<!--Product Details-->
+<div class="container">
+<div class="row" style="margin-top: 1%;">
+    <div class="col">
+      <h3 style="color: black;"> <b> My Cart</b></h3>
+    </div>
+  </div>
+  <div class="alert alert-info" *ngIf="cartItems.length===0">Your Cart is empty.</div>
+  <div class="row" *ngIf="cartItems.length!=0">
+    <div class="col-md-6">
+      <ul class="list-group">
+        <li class="list-group-item" *ngFor="let item of cartItems">
+          <!-- <app-cart-item [cartItem]="item"></app-cart-item>-->
+          <div class="card mb-4 ">
+            <div class="card-horizontal">
+              <div class="img-square-wrapper">
+                <img class="card-img" src="assets/img/product.jpg" height="150px" width="150px" alt="product image">
+              </div>
+              <div class="card-body">
+                <div class="card-text">
+                  <div class="row">
+                    <div class="col">
+                      <p>
+  
+                        <span class="card-title">{{item.productName | slice:0:30}}...</span>
+                      </p>
+                    </div>
+                    <div class="col">
+                      <i class="far fa-heart float-right fa-2x" style="cursor: pointer;"></i>
+                    </div>
+                  </div>
+  
+                </div>
+                <div class="card-text">
+                  <p>
+                    <strong style="color: black;">{{ item.cartItemPrice | currency:'INR' }}</strong>
+                  </p>
+                </div>
+              </div>
+            </div>
+            <div class="card-footer">
+              <div class="row">
+                <div class="col">
+                  <i class="fa fa-minus-circle fa-2x" aria-hidden="true" style="color: black; cursor: pointer;"
+                    (click)="decreaseQuantity(item)">&nbsp; </i>
+                  <span class="label label-default" style="color: black; font-size: large;">{{item.quantity}}</span>
+                  &nbsp; <i class="fa fa-plus-circle fa-2x" aria-hidden="true" style="color: black; cursor: pointer;"
+                    (click)="IncreaseQuantity(item)"></i>
+  
+                </div>
+                <div class="col">
+                  <i class="fa fa-trash float-right fa-2x" aria-hidden="true" (click)="removeItemFromCart(item)"></i>
+                </div>
+              </div>
+            </div>
+          </div>
+        </li>
+      </ul>
+    </div>
+    <!--Price Details-->
+    <div class="col-md-6">
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <strong>PRODUCT DETAILS</strong>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col">
+                  <label for="price">Price ({{cartItems.length}}) Items</label>
+                </div>
+                <div class="col">
+                  <strong><span style="color: black;"> {{ cartTotalPrice | currency:'INR' }}</span></strong>
+                </div>
+              </div>
+              <div class="row">
+                <div class="col">
+                  <label for="price">Delivery Fee</label>
+                </div>
+                <div class="col">
+                  <strong><span style="color: black;"> {{ deliveryFee | currency:'INR' }}</span></strong>
+                </div>
+              </div>
+              <hr class="hr1">
+              <div class="row">
+                <div class="col">
+                  <label for="price" style="color: black;">Total Amount</label>
+                </div>
+                <div class="col">
+                  <strong><span style="color: black;"> {{ cartTotalPrice + deliveryFee | currency:'INR' }}</span></strong>
+                </div>
+              </div>
+            </div>
+          </div>
+        </div>
+      </div>
+      <div class="row">
+        <div class="col">
+          <div class="card">
+            <div class="card-header">
+              <strong>ADDRESS DETAILS</strong>
+            </div>
+            <div class="card-body">
+              <div class="row">
+                <div class="col" *ngIf="addressList.length==0">
+                  <p>
+                    <a href="/address/add-address" class="btn btn-primary">+ Add new Address</a>
+                </p>
+                </div>
+                <div class="col" *ngIf="addressList.length>0">
+                    <mat-card *ngFor="let address of addressList">
+                        <mat-card-content>
+                            <div class="row">
+                                <div class="col">
+                                    <span><strong>{{address.fullName}}</strong> </span>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 1%;">
+                                <div class="col">
+                                    <span> {{address.addressLine}}, {{address.city}} - {{address.pincode}} ( {{address.state}} )</span>
+                                </div>
+                            </div>
+                            <div class="row" style="margin-top: 1%;">
+                                <div class="col">
+                                    <span><strong>Phone Number</strong></span>
+                                </div>
+                            </div>
+                            <div class="row" >
+                                <div class="col">
+                                    <span>{{address.phoneNo}} , {{address.otherPhoneNo}}</span>
+                                </div>
+                                <div class="col">
+                                  <input type="radio" [value]="address.addressId" [(ngModel)]="addressId" name="addressId">
+                                </div>
+                            </div>
+                        </mat-card-content>
+                    </mat-card>
+                </div>
+            </div>
+              <hr class="hr1">
+  
+            <div class="row">
+              <button class="btn btn-primary btn-block btn-sm" (click)="checkOutChart()">PLACED ORDER</button>
+            </div>
+          </div>
+        </div>
+      </div>
+  
+    </div>
+  
+  
+  </div>
+  
+  </div>
+</div>

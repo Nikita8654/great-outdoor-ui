@@ -1,0 +1,41 @@
+
+<div class="card mt-5" style="margin:auto; width: 910px;">
+  <mat-card fxFlex="50">
+    <form class="form-inline">
+      <input class="form-control" name="searchInput" placeholder="Search by product Name.." #searchInput="ngModel"
+             [(ngModel)]="searchText" style="width: 95% " >
+      <button class="btn btn-outline-primary" (click)="searchText=''">X</button>
+    </form>
+    <table class="table table-sum" style="border: 1px;">
+      <thead class="mdb-color lighten-7">
+      <th>Product </th>
+      <th>Color</th>
+      <th>Price</th>
+      <th>Quantity</th>
+      <th>Description</th>
+      <th>Action</th>
+      </thead>
+      <ng-container *ngFor="let product of products">
+        <tr *ngIf="onSearch(product)">
+          <td>{{product.productName}}
+            <p class="text-muted">{{product.productCategory}}</p></td>
+          <td  >{{product.productColor }}</td>
+          <td  >{{product.productPrice| currency:'INR'}}</td>
+          <td  >{{product.productQuantity}}</td>
+          <td >{{product.productSpecification}}</td>
+          <td >
+
+            <a href="#"  [routerLink]="['edit',product.productId]" title="Edit Product" style="margin-left: 5px;">
+              <i class="fa fa-edit"></i>
+            </a>
+            <a  href="#"  (click)="deleteProduct(product.productId)" title="Delete Product" style="margin-left: 5px;">
+              <i class="fa fa-trash"></i>
+            </a>
+          </td>
+        </tr>
+
+      </ng-container>
+
+    </table>
+  </mat-card>
+</div>

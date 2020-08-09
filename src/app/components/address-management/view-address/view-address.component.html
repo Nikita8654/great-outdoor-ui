@@ -1,0 +1,44 @@
+<main role="main">
+    <section class="jumbotron text-center">
+        <div class="container">
+            <h1>Manage your Addresses</h1>
+        </div>
+        <div class="container">
+            <p>
+                <br>
+                <a href="/address/add-address" class="btn btn-primary">+ Add new Address</a>
+            </p>
+        </div>
+    </section>
+    <div class="album py-5 bg-light">
+        <div class="alert alert-info" *ngIf="addressList.length==0">Address Not found!</div>
+        <div class="container" *ngIf="addressList.length>0">
+            <div class="row">
+                <div class="col-md-4" *ngFor="let item of addressList; let i=index">
+                    <div class="card mb-4 shadow-sm">
+                        <div class="card-body">
+                            <p class="card-text"><b>Full Name: &nbsp;</b>{{item.fullName}}</p>
+                            <p class="card-text"><b>Address: &nbsp;</b>{{item.addressLine}}</p>
+                            <p class="card-text"><b>City: &nbsp;</b>{{item.city}}</p>
+                            <p class="card-text"><b>Pin code: &nbsp;</b>{{item.pincode}}</p>
+                            <p class="card-text"><b>State: &nbsp;</b>{{item.state}}</p>
+                            <p class="card-text"><b>Phone No: &nbsp;</b>{{item.phoneNo}} <span *ngIf="item.otherPhnoeNo!=''">&nbsp; ,{{item.otherPhoneNo}}</span></p>
+                            <p class="card-text"><b>Address Type: &nbsp;</b> {{item.addressType}}</p>
+                            <div class="d-flex justify-content-between align-items-center">
+                                <div class="btn-group">
+                                    <button type="button" class="btn btn-sm btn-outline-primary" type="submit"
+                                        (click)="setId(item.addressId)">Edit</button>
+                                    <button class="btn btn-sm btn-outline-secondary" type="submit"
+                                        (click)="deleteAddress(item.addressId)"> Delete</button>
+                                </div>
+
+                            </div>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+        <div class="alert alert-info" *ngIf="isDeleted">Address Deleted successfully!</div>
+    </div>
+
+</main>
